@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Usuarios list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidopat</th>
+                <th>Apellidomat</th>
+                <th>Edad</th>
+                <th>Tel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entidad in entidads %}
+            <tr>
+                <td><a href="{{ path('entidad_show', { 'id': entidad.id }) }}">{{ entidad.id }}</a></td>
+                <td>{{ entidad.nombre }}</td>
+                <td>{{ entidad.apellidoPat }}</td>
+                <td>{{ entidad.apellidoMat }}</td>
+                <td>{{ entidad.edad }}</td>
+                <td>{{ entidad.tel }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('entidad_show', { 'id': entidad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('entidad_edit', { 'id': entidad.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('entidad_new') }}">Create a new usuario</a>
+        </li>
+    </ul>
+{% endblock %}
